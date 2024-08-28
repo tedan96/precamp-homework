@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>인풋 검증 실습</title>
+    <script>
+        function 인풋검증기능() {
+            console.log("입력했음")
+
+            const 이메일 = document.getElementById("이메일입력창").value
+            const 여자선택 = document.getElementById("여자선택").checked
+            const 남자선택 = document.getElementById("남자선택").checked
+            const 동의선택 = document.getElementById("동의선택").checked
+
+            console.log(이메일)
+            console.log(여자선택)
+            console.log(남자선택)
+            console.log(동의선택)
+
+            const 인풋창확인 = 이메일 !== "" //비어있으면 인풋창확인은 true
+            const 성별확인 = (여자선택 === true) || (남자선택 === true)
+            const 동의확인 = 동의선택 === true
+
+            if(인풋창확인 === true && 성별확인 === true && 동의확인 === true) {
+                document.getElementById("가입버튼").style = "background-color: yellow"
+                document.getElementById("가입버튼").disabled = false
+            } else {
+                document.getElementById("가입버튼").style = "background-color: none" //원래 색으로 돌리기
+                document.getElementById("가입버튼").disabled = true
+            }
+        }
+    </script>
+</head>
+<body>
+    이메일: <input type="text" oninput="인풋검증기능()" id="이메일입력창"/> <br>
+    <input id="여자선택" oninput="인풋검증기능()" type="radio" name="성별"/>여성
+    <input id="남자선택" oninput="인풋검증기능()" type="radio" name="성별"/>남성<br>
+    <input id="동의선택" oninput="인풋검증기능()" type="checkbox"/>동의<br>
+    <button id="가입버튼" disabled>회원가입</button>
+</body>
+</html>
